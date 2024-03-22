@@ -60,7 +60,13 @@ app.get("/landing", (req, res) => {
 // app.get("/account", (req, res) => {
 //   res.render("account");
 // });
+app.get("/home", (req, res) => {
+  res.render("home");
+});
 
+app.get("/publisher", (req, res) => {
+  res.render("publisher");
+});
 
 app.get("/account", async (req, res) => {
   try {
@@ -169,7 +175,6 @@ app.post("/login", async (req, res) => {
 
 
 
-
 app.post("/signup", async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
   const emailString = Array.isArray(email) ? email.join("") : email;
@@ -193,7 +198,8 @@ app.post("/signup", async (req, res) => {
 
     await user.save();
 
-    return res.render("home");
+    // Redirect to the account page with user details after successful signup
+    res.redirect(`/account/${user.email}`);
   } catch (error) {
     // Check if the error is a duplicate key error
     if (error.code === 11000 && error.keyPattern.email) {
@@ -207,17 +213,26 @@ app.post("/signup", async (req, res) => {
     return res.render("error", { error: "An error occurred. Please try again later." });
   }
 });
+app.get("/account/:email", async (req, res) => {
+  try {
+    const userEmail = req.params.email;
 
+    // Fetch user data from the database based on the provided email
+    const user = await User.findOne({ email: userEmail });
 
-
-app.get("/home", (req, res) => {
-  // Check if user is logged in
-  if (req.session.user) {
-    res.render("home"); // Render the 'home.ejs' template
-  } else {
-    res.redirect("/");
+    // If user data is found, render the account.ejs template with user data
+    if (user) {
+      res.render("account", { user });
+    } else {
+      return res.status(404).json({ error: "User not found" });
+    }
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    return res.status(500).json({ error: "An error occurred while fetching user profile" });
   }
 });
+
+
 app.get("/", (req, res) => {
   res.render("landing"); // Render the 'login.ejs' template
 });

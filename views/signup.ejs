@@ -34,7 +34,9 @@
         
         <div class="register-container" id="register">
             
-            <form action="/signup" method="post">
+            <form action="/signup" method="post" style="
+                color:white;
+                margin-top:10px;">
                 <% if (typeof error !== 'undefined' && error) { %>
     <div class="error-message">
         <%= error %>
@@ -74,7 +76,7 @@
 
             </div>
             
-            <div class="two-col">
+            <!-- <div class="two-col">
                 <div class="one">
                     <input type="checkbox" id="register-check">
                     <label for="register-check"> Remember Me</label>
@@ -83,7 +85,7 @@
                    
                     <label><a href="#">Terms & conditions</a></label>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!------------------- login form -------------------------->
 

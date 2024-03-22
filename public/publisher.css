@@ -1,0 +1,35 @@
+#map-container {
+    /* background-color: black; */
+    display:flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    position: relative;
+}
+
+#map { 
+    height: 500px;
+    width: 100%; 
+    box-shadow: 3px 3px 10px 0 grey;
+}
+
+#geocoder {
+    position: absolute;
+    /* background-color: pink; */
+    padding: 0;
+    bottom: -40px;
+    margin-right: 0;
+    display: inline-block;
+}
+
+#map-button {
+    background-color: #f7f4ef;
+    position: absolute;
+    right:-1px;;
+    bottom: -45px;
+    /* margin-right: 12px; */
+    height:5vh;
+    width: 8vw;
+    border-radius: 8px;
+    box-shadow: 3px 3px 10px 0 grey;
+    border: none;
+}
