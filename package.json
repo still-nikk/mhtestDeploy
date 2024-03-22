@@ -1,0 +1,24 @@
+{
+  "name": "unidrive",
+  "version": "1.0.0",
+  "description": "unidrive",
+  "main": "server.js",
+  "scripts": {
+    "test": "server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "author": "himani",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.19.1",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.2.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
+  }
+}
